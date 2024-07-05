@@ -14,6 +14,7 @@ header {
     background: #333;
     color: #fff;
     padding: 10px 0;
+
 }
 
 nav ul {
@@ -21,17 +22,21 @@ nav ul {
     margin: 0;
     padding: 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 30px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
     font-size: 18px;
+
 }
 
 section {
@@ -69,17 +74,16 @@ footer {
 /* Works Section Styles */
 #works{
 display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
-    justify-items: center; /* 아이템을 중앙에 정렬 */
-
+    justify-content: center;
+overflow: auto;
 }
 
 .work-item {
-    margin: 20px 0;
+    padding: 20px;
     border: 1px solid black;
-    width: 600px;
-    height: 600px;
+    box-shadow: 5px 5px 0 grey;
     text-align: center;
     
 }
@@ -87,8 +91,7 @@ display: grid;
 #works .work-item img, #works .work-item video{
     max-width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
     height: auto; /* 세로 비율을 유지 */
-    display: block;
-    margin: 0 auto; /* 중앙 정렬 */
+    margin-bottom: 10px;
    
 }
 
@@ -116,7 +119,8 @@ display: grid;
 }
 
 #gallery .gallery-item :hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
+    box-shadow: 5px 5px 5px grey;
 }
 
 
