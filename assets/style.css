@@ -71,6 +71,7 @@ display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     justify-items: center; /* 아이템을 중앙에 정렬 */
+
 }
 
 .work-item {
@@ -115,4 +116,15 @@ display: grid;
 
 #gallery .gallery-item :hover {
     transform: scale(1.3);
+}
+
+
+.active-link::before {
+    content: "❤  "; /* 이모티콘 추가 */
+    font-size: 1em; /* 이모티콘 크기 조절 */
+    color: pink; /* 이모티콘 색상 */
+}
+
+nav ul li a:hover {
+    color: pink; /* 호버할 때 색상 */
 }
