@@ -53,34 +53,7 @@ section {
     height: auto;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-form label {
-    margin-top: 10px;
-}
-
-form input, form textarea {
-    margin-top: 5px;
-    padding: 10px;
-    width: 300px;
-}
-
-form button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #555;
-}
 
 footer {
     background: #333;
@@ -90,4 +63,56 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Works Section Styles */
+#works{
+display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center; /* 아이템을 중앙에 정렬 */
+}
+
+.work-item {
+    margin: 20px 0;
+    border: 1px solid black;
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    
+}
+
+#works .work-item img, #works .work-item video{
+    max-width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
+    height: auto; /* 세로 비율을 유지 */
+    display: block;
+    margin: 0 auto; /* 중앙 정렬 */
+   
+}
+
+/* Gallery Section Styles */
+#gallery .gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.gallery-item {
+    margin: 10px;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    display: flex;
+    transition: transform 0.6s;
+
+}
+
+#gallery .gallery-item img, #gallery .gallery-item video{
+    
+    width: 200px;
+    height: auto;
+}
+
+#gallery .gallery-item :hover {
+    transform: scale(1.3);
 }
