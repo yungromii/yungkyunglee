@@ -95,13 +95,17 @@ footer {
 /* Works Section Styles */
 #works{
 display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
     justify-content: center;
 overflow: auto;
+margin: 0 auto;
+max-width: 800px;
+
 }
 
 .work-item {
+	
     padding: 20px;
     border: 1px solid black;
     box-shadow: 5px 5px 0 grey;
@@ -110,6 +114,7 @@ overflow: auto;
 }
 
 #works .work-item img, #works .work-item video{
+
     max-width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
     height: auto; /* 세로 비율을 유지 */
     margin-bottom: 10px;
