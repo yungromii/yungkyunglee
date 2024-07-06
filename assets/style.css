@@ -246,4 +246,9 @@ nav ul li a:hover {
     height: auto; /* 세로 비율 유지 */
 }
 
+.imagee-item video {
+    max-width: 800px; /* 이미지의 최대 너비 */
+    height: auto; /* 세로 비율 유지 */
+}
+
   
