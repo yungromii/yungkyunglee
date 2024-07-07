@@ -22,6 +22,7 @@ body {
     font-family: Aptos,A1 ;
     margin: 0;
     padding: 0;
+
     
 }
 
@@ -257,4 +258,50 @@ nav ul li a:hover {
 	text-align: start;
 }
 
-  
+.slideshow-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    background: none; /* 슬라이드 배경색 */
+}
+
+.slideshow-container .slide {
+    display: none;
+    text-align: center;
+}
+
+.slideshow-container .active-slide {
+    display: block;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: auto;
+}
+
+.slideshow-caption {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    display: none; /* 기본적으로 숨김 */
+}
+
+.slideshow-container .slide:hover .slideshow-caption {
+    display: block; /* 호버 시 표시 */
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
