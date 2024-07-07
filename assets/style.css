@@ -31,7 +31,7 @@ header {
     padding: 10px 0;
     position: fixed;
     width: 100%;
-    
+   
 
 }
 
@@ -59,7 +59,7 @@ nav ul li a {
 }
 
 section {
-    padding: 50px 30px;
+    padding: 60px 30px;
     text-align: center;
 
 }
@@ -235,6 +235,7 @@ nav ul li a:hover {
 
 /* Imagee Container Styles */
 #imagee-container {
+
     display: flex;
     justify-content: center; /* 가로 중앙 정렬 */
     flex-wrap: wrap; /* 필요시 다음 줄로 이동 */
@@ -249,6 +250,11 @@ nav ul li a:hover {
 .imagee-item video {
     max-width: 800px; /* 이미지의 최대 너비 */
     height: auto; /* 세로 비율 유지 */
+}
+
+.imagee-item {
+	max-width: 800px;
+	text-align: start;
 }
 
   
