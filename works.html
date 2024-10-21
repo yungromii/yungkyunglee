@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -9,97 +8,106 @@
 </head>
 <body>
     <header>
-        
-    <!-- 왼쪽 끝에 위치하는 이름 탭 -->
-    <div class="contact-info">
-        <span class="name-hover">Yungkyung Lee</span>
-        <div class="hover-box">
-            <span>Yung Kyung Lee <a href="mailto:hamsterdoll@snu.ac.kr">hamsterdoll@snu.ac.kr</a></span>
-            <span>IG: <a href="https://instagram.com/yungromiii" target="_blank">@yungromiii</a></span>
+        <div class="contact-info">
+            <span class="name-hover">Yungkyung Lee</span>
+            <div class="hover-box">
+                <span>Yung Kyung Lee <a href="mailto:hamsterdoll@snu.ac.kr">hamsterdoll@snu.ac.kr</a></span>
+                <span>IG: <a href="https://instagram.com/yungromiii" target="_blank">@yungromiii</a></span>
+            </div>
         </div>
-    </div>
 
-    <!-- 오른쪽 끝에 위치하는 네비게이션 메뉴 -->
-    <nav>
-        <ul>
-            <li><a href="index.html" id="home-link">home</a></li>
-            <li><a href="works.html" id="works-link">works</a></li>
-            <li><a href="gallery.html" id="gallery-link">gallery</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="home-link">home</a></li>
+                <li><a href="works.html" id="works-link">works</a></li>
+                <li><a href="gallery.html" id="gallery-link">gallery</a></li>
+            </ul>
+        </nav>
+
 
     </header>
 
-    <section id="works">
+    <div id="category-filters">
+        <button data-filter="3d">3D</button>
+        <button data-filter="poster">Poster</button>
+        <button data-filter="book">Book</button>
+        <button data-filter="animation">Animation</button>
+        <button data-filter="website">Website</button>
+        <button data-filter="romi">ROMI</button>
+        <button data-filter="illustration">Illustration</button>
+        <button data-filter="print">Print</button>
+        <button data-filter="video">Video</button>
+    </div>
+    
 
-        <a href="romi-drawing.html" class="work-item">
+    
+
+    <section id="works">
+        <a href="romi-drawing.html" class="work-item" data-categories="illustration print romi">
             <img src="assets/vid/Rd.gif" alt="Romi Drawing">
             <p>Drawing Series - Romi</p>
         </a>
 
-        <a href="romis-outfit.html" class="work-item">
+        <a href="romis-outfit.html" class="work-item" data-categories="illustration print romi website">
             <img src="assets/vid/Ro.gif" alt="Romi's Outfit">
             <p>Romi's Outfit</p>
         </a>
 
-        <a href="romi-world.html" class="work-item">
+        <a href="romi-world.html" class="work-item" data-categories="3d romi poster print">
             <img src="assets/vid/Rw.gif" alt="Romi World">
             <p>Romi World</p>
         </a>
 
-        <a href="erotic-garden.html" class="work-item">
+        <a href="erotic-garden.html" class="work-item" data-categories="romi animation">
             <img src="assets/vid/Ero.gif" alt="Erotic Garden">
             <p>Erotic Garden</p>
         </a>
 
-        <a href="street-angels.html" class="work-item">
+        <a href="street-angels.html" class="work-item" data-categories="romi animation print">
             <img src="assets/vid/Sa.gif" alt="Street Angels">
             <p>Street Angels</p>
         </a>
 
-        <a href="stalker-romi.html" class="work-item">
+        <a href="stalker-romi.html" class="work-item" data-categories="3d animation romi">
             <img src="assets/vid/Cc.gif" alt="Stalker">
             <p>Stalker / Romi</p>
         </a>
 
-        <a href="cinecom-spring-2024.html" class="work-item">
+        <a href="cinecom-spring-2024.html" class="work-item" data-categories="poster book print">
             <img src="assets/vid/C1.gif" alt="2024 씨네꼼 봄 영화제: 단절과 고독">
             <p>2024 씨네꼼 봄 영화제: 단절과 고독</p>
         </a>
 
-        <a href="cinecom-winter-2024.html" class="work-item">
+        <a href="cinecom-winter-2024.html" class="work-item" data-categories="poster book print">
             <img src="assets/vid/C.gif" alt="2024 씨네꼼 겨울 영화제: 응답하라 1994">
             <p>2024 씨네꼼 겨울 영화제: 응답하라 1994</p>
         </a>
 
-        <a href="movie-redesign.html" class="work-item">
-            <img src="assets/vid/Mh.gif" alt="Visual Diary">
+        <a href="movie-redesign.html" class="work-item" data-categories="print poster book">
+            <img src="assets/vid/Mh.gif" alt="Movie Redesign">
             <p>Movie Redesign</p>
         </a>
 
-        <a href="10-1.html" class="work-item">
+        <a href="10-1.html" class="work-item" data-categories="website">
             <img src="assets/vid/10.1.gif" alt="10.1">
             <p>10월 1일 국군의 날</p>
         </a>
 
-        <a href="visual-diary.html" class="work-item">
+        <a href="visual-diary.html" class="work-item" data-categories="romi illustration">
             <img src="assets/vid/Vd.gif" alt="Visual Diary">
             <p>Visual Diary</p>
         </a>
 
-        <a href="toon-render.html" class="work-item">
+        <a href="toon-render.html" class="work-item" data-categories="3d romi video">
             <img src="assets/vid/Tr.gif" alt="Toon Render">
             <p>Toon Render</p>
         </a>
 
-        <a href="buddha.html" class="work-item">
+        <a href="buddha.html" class="work-item" data-categories="3d video">
             <img src="assets/vid/Bud.gif" alt="Buddha">
             <p>Buddha Series</p>
         </a>
-        <!-- Add more work items as needed -->
     </section>
-
-   
 
     <script type="text/javascript" src="assets/init.js"></script>
 </body>
