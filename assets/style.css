@@ -230,6 +230,20 @@ section {
     background: none;
 }
 
+/* 모바일 환경에서 높이 보정 */
+@media (max-width: 768px) {
+    .slideshow-container {
+        top: calc(50% + 30px); /* 모바일에서 수직 위치 조정 */
+        height: auto; /* 자동 높이 */
+    }
+
+    .slideshow-container img {
+        object-fit: contain; /* 이미지 왜곡 방지 */
+        width: 100%;
+        height: auto;
+    }
+}
+
 /* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
 .slideshow-container img {
     width: 100%;
