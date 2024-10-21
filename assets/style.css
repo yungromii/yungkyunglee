@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: J;
-    src: url(J.Regular.otf);
-    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+    src: url(J.Regular.otf) format('opentype');
+    unicode-range: U+0000-007F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
 }
 
 body {
@@ -299,6 +299,7 @@ margin: 80px 0 20px; /* 헤더와 적절한 간격 유지 */
     color: white !important;
     background: red !important;
     border: none !important;
+    cursor: pointer !important;
 }
 
 #category-filters button.active {
