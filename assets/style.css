@@ -1,7 +1,7 @@
 * {
-	margin:  0px;
-	padding:  0px;
-	box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -16,260 +16,223 @@
     unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
 }
 
-
+@font-face {
+    font-family: J;
+    src: url(J.Regular.otf);
+    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+}
 
 body {
-    font-family: Aptos,A1 ;
+    font-family: J;
     margin: 0;
     padding: 0;
-
+    font-size: 16px;
     
 }
 
+/* 헤더 스타일 */
 header {
-    background: rgba(255,255,255,0.7);
-    
-    padding: 10px 0;
+    background: white;
+    padding: 10px 20px;
     position: fixed;
     width: 100%;
+    display: flex; /* 수평 정렬 */
+    justify-content: space-between; /* 이름은 왼쪽, 메뉴는 오른쪽 */
+    align-items: center; /* 수직 중앙 정렬 */
+    z-index: 100; /* 항상 위에 표시 */
+}
+
+/* 이름(이영경) 탭 스타일 */
+.contact-info {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* 호버 박스 스타일 */
+.contact-info .hover-box {
+    display: none;
+    position: absolute;
+    top: 10px; 
+    left: 10px;
+    min-width: 150px;
+    max-width: 200px;
+    border: 1px solid black;
    
+    background-color: grey;
+    padding: 10px;
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    overflow-wrap: break-word; /* 긴 단어 줄바꿈 */
+    z-index: 10;
+    line-height: 1.6; /* 줄 간격 조정 */
+    font-size: 14px;
+}
+
+
+
+/* 이름 탭을 호버하면 박스 표시 */
+.contact-info:hover .hover-box {
+    display: block;
 
 }
 
+/* 네비게이션 메뉴 스타일 */
 nav ul {
     list-style: none;
+    display: flex; /* 수평 정렬 */
+    gap: 30px; /* 메뉴 간 간격 */
     margin: 0;
     padding: 0;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 30px;
-}
-
+/* 네비게이션 링크 스타일 */
 nav ul li a {
-    color: grey;
+    color: black;
     text-decoration: none;
+    
     font-size: 18px;
-    font-family: Aptos;
+    transition: color 0.3s;
+}
 
+nav ul li a:hover {
+    color: white;
+    background: grey;
+}
+
+/* 활성화된 링크 스타일 */
+.active-link::before {
+    content: "❤  ";
+    font-size: 0.8em;
+    color: black;
+}
+
+.active-link {
+    color: white;
+    background: red;
 }
 
 section {
     padding: 60px 30px;
     text-align: center;
-
-}
-
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.gallery-item {
-    margin: 10px;
-}
-
-.gallery-item img {
-    max-width: 100%;
-    height: auto;
 }
 
 
 
-footer {
-    background: rgba(255,255,255,0.7);
-    color: hotpink;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    
-}
-
-/* Works Section Styles */
-#works{
-display: grid;
-    grid-template-columns: 1fr;
+/* Works Section */
+#works {
+    display: grid;
     gap: 20px;
-    justify-content: center;
-overflow: auto;
-margin: 0 auto;
-max-width: 800px;
+    overflow: auto;
+    margin: 0 auto;
+    max-width: 1200px; /* 최대 너비 제한 */
+}
 
+/* 기본: 모바일 화면에서는 1개씩 표시 */
+#works {
+    grid-template-columns: 1fr;
+}
+
+/* 태블릿 및 작은 노트북: 2개씩 표시 */
+@media (min-width: 1440px) {
+    #works {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 일반 노트북 및 데스크탑: 3개씩 표시 */
+@media (min-width: 2500px) {
+    #works {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 큰 화면(모니터): 4개씩 표시 */
+@media (min-width: 3500px) {
+    #works {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .work-item {
-	
     padding: 20px;
-    border: 1px solid black;
+    border: 1.5px solid black;
     box-shadow: 5px 5px 0 grey;
     text-align: center;
-    
+    background: white;
+    border-radius: 10px;
 }
 
-#works .work-item img, #works .work-item video{
-
-    max-width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
-    height: auto; /* 세로 비율을 유지 */
+#works .work-item img,
+#works .work-item video {
+    max-width: 100%;
+    height: auto;
     margin-bottom: 10px;
-   
 }
 
-/* Gallery Section Styles */
+/* Gallery Section */
 #gallery .gallery-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 .gallery-item {
     margin: 10px;
-    align-items: center; /* 수직 중앙 정렬 */
-    justify-content: center; /* 수평 중앙 정렬 */
     display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.6s;
-
 }
 
-#gallery .gallery-item img, #gallery .gallery-item video{
-    
+#gallery .gallery-item img,
+#gallery .gallery-item video {
     width: 200px;
     height: auto;
 }
 
-#gallery .gallery-item :hover {
+#gallery .gallery-item:hover {
     transform: scale(1.2);
     box-shadow: 5px 5px 5px grey;
 }
 
-
-.active-link::before {
-    content: "❤  "; /* 이모티콘 추가 */
-    font-size: 0.8em; /* 이모티콘 크기 조절 */
-    color: white; /* 이모티콘 색상 */
-}
-
-.active-link{
-	color: white;
-	background: hotpink;
-}
-
-nav ul li a:hover {
-    color: white; /* 호버할 때 색상 */
-    background: grey;
-}
-
-
-
-#profile{
-	width: 500px;
-	height: auto;
-	margin-bottom: 20px;
-}
-
-.image-container {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    
-  }
-
-  .image-container img {
-    position: absolute;
-   top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .image-container img.back {
-    opacity: 0;
-  }
-
-  .image-container:hover img.front {
-    opacity: 0;
-  }
-
-  .image-container:hover img.back {
-    opacity: 0.6;
-  }
-
-  #about {
-  	position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-  	 display: flex;
-    align-items: center;
-    justify-content: center;
-  	width: 90vw;
-  	
-
-  }
-
-  #insta {
-  	margin: 20px;
-  	color: black;
-
-  }
-
-  .introduce{
-  	width: 500px;
-
-  	font-size: 18px;
-  	line-height: 24px;
-  }
-
-  .ko{
-  	font-size: 0.9em;
-  }
-
-/* Imagee Container Styles */
+/* Imagee Container */
 #imagee-container {
-
     display: flex;
-    justify-content: center; /* 가로 중앙 정렬 */
-    flex-wrap: wrap; /* 필요시 다음 줄로 이동 */
-    gap: 10px; /* 이미지 간격 */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.imagee-item img {
-    max-width: 800px; /* 이미지의 최대 너비 */
-    height: auto; /* 세로 비율 유지 */
-}
-
+.imagee-item img,
 .imagee-item video {
-    max-width: 800px; /* 이미지의 최대 너비 */
-    height: auto; /* 세로 비율 유지 */
+    max-width: 800px;
+    height: auto;
 }
 
 .imagee-item {
-	max-width: 800px;
-	text-align: start;
+    max-width: 800px;
+    text-align: start;
 }
 
+/* Slideshow Container: 헤더를 가리지 않도록 조정 */
 .slideshow-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
+    position: fixed;
+    top: 60px; /* 헤더 아래로 배치 */
+    left: 0;
+    width: 100vw; /* 뷰포트 전체 너비 */
+    height: calc(100vh - 60px); /* 헤더 높이를 뺀 높이 */
     overflow: hidden;
-    background: none; /* 슬라이드 배경색 */
+    z-index: -1;
+    background: none;
 }
 
+/* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
+.slideshow-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지하며 화면 채움 */
+}
+
+/* 슬라이드 숨김 및 활성 슬라이드 표시 */
 .slideshow-container .slide {
     display: none;
     text-align: center;
@@ -279,30 +242,37 @@ nav ul li a:hover {
     display: block;
 }
 
-.slideshow-container img {
-    width: 100%;
-    height: auto;
-}
-
+/* 슬라이드 캡션 스타일: 세련된 디자인 */
 .slideshow-caption {
     position: absolute;
-    bottom: 8px;
-    left: 50%;
+    bottom: 5%; /* 이미지 아래쪽에 여유 있게 배치 */
+    left: 12%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    display: none; /* 기본적으로 숨김 */
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 0 grey;
+    font-size: 1rem;
+    text-align: left;
+    max-width: 80%; /* 이미지와 조화롭게 너비 제한 */
+    background-color: white;
+    opacity: 0; /* 기본 상태에서 숨김 */
+    transition: opacity 0.5s ease-in-out; /* 부드러운 전환 효과 */
+    word-break: break-word; /* 긴 단어 줄바꿈 */
 }
 
+
+
+/* 슬라이드 호버 시 캡션 표시 */
 .slideshow-container .slide:hover .slideshow-caption {
-    display: block; /* 호버 시 표시 */
+    opacity: 1;
 }
 
-a{
-	text-decoration: none;
-	color: black;
+/* 슬라이드 호버 시 캡션 표시 */
+.slideshow-container .slide:hover .slideshow-caption {
+    opacity: 1; /* 부드럽게 나타남 */
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
