@@ -185,17 +185,20 @@ section {
     align-items: center;
     justify-content: center;
     transition: transform 0.6s;
+    border-radius: 8px;
 }
 
 #gallery .gallery-item img,
 #gallery .gallery-item video {
     width: 200px;
     height: auto;
+    border-radius: 8px;
+
 }
 
 #gallery .gallery-item:hover {
     transform: scale(1.2);
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 0 grey;
 }
 
 /* Imagee Container */
@@ -309,7 +312,7 @@ margin: 80px 0 20px; /* 헤더와 적절한 간격 유지 */
 #category-filters button {
     padding: 10px 15px;
     border: 1.5px solid black;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: J;
     font-size: 16px;
     background-color: white;

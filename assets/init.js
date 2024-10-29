@@ -68,9 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
         setInterval(showNextSlide, 3000);
     }
 
-    // 필터 기능 구현
+    // 페이지에 따라 필터 대상 선택 (works 또는 gallery)
+    const items = page === "gallery.html"
+        ? document.querySelectorAll('.gallery-item')
+        : document.querySelectorAll('.work-item');
+
     const filters = document.querySelectorAll('#category-filters button');
-    const workItems = document.querySelectorAll('.work-item');
     let activeFilters = new Set(); // 중복 선택을 위한 Set
 
     // 필터 버튼 클릭 이벤트
@@ -86,20 +89,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 button.classList.add('active');
             }
 
-            filterWorks(); // 필터 적용
+            applyFilters(); // 필터 적용
         });
     });
 
     // 필터 적용 함수
-    function filterWorks() {
-        workItems.forEach(item => {
+    function applyFilters() {
+        items.forEach(item => {
             const categories = item.getAttribute('data-categories').split(' ');
             const isVisible = [...activeFilters].every(filter => categories.includes(filter));
             item.style.display = isVisible || activeFilters.size === 0 ? 'block' : 'none';
         });
 
-        // 필터 후 Grid 레이아웃 강제 재적용
-    const worksSection = document.getElementById('works');
-    worksSection.style.display = 'grid';  // Grid 레이아웃 유지
+        // 필터 후 Grid 레이아웃 강제 재적용 (works 페이지에만 적용)
+        if (page === "works.html") {
+            const worksSection = document.getElementById('works');
+            worksSection.style.display = 'grid';  // Grid 레이아웃 유지
+        }
     }
 });
