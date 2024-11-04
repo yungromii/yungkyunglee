@@ -110,4 +110,20 @@ document.addEventListener("DOMContentLoaded", function () {
             gallerySection.style.display = 'grid';  // gallery 페이지의 Grid 레이아웃 유지
         }
     }
+
+    // 백드롭 비디오 음소거 토글 기능 (추가 기능)
+    const video = document.querySelector("#background-video"); // 비디오 요소 선택
+    const toggleSoundButton = document.querySelector("#toggle-sound"); // 음소거 토글 버튼 선택
+
+    if (video && toggleSoundButton) {
+        // 초기 음소거 설정
+        video.muted = true;
+
+        toggleSoundButton.addEventListener("click", () => {
+            // 뮤트 상태를 토글
+            video.muted = !video.muted;
+            // 버튼 텍스트 업데이트
+            toggleSoundButton.textContent = video.muted ? "sound on" : "sound off";
+        });
+    }
 });
