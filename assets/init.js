@@ -7,8 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const worksLink = document.getElementById("works-link");
     const galleryLink = document.getElementById("gallery-link");
 
-    if (page === "index.html") {
+    // 초기 로드 시 홈 섹션 활성화 및 슬라이드쇼 실행
+    function activateHome() {
         homeLink.classList.add("active-link");
+        showSlideshow();
+    }
+
+    if (page === "index.html" || page === "") {
+        activateHome(); // 페이지 로드 시 자동으로 홈 섹션 활성화
     } else if (page === "works.html") {
         worksLink.classList.add("active-link");
     } else if (page === "gallery.html") {
@@ -16,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 슬라이드쇼 기능 구현 (index.html에서만 동작)
-    if (page === "index.html") {
+    function showSlideshow() {
         const workItems = [
             { src: "assets/vid/Rd.gif", alt: "Romi Drawing", caption: "Drawing Series - Romi" },
             { src: "assets/vid/Ro.gif", alt: "Romi's Outfit", caption: "Romi's Outfit" },
@@ -111,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 백드롭 비디오 음소거 토글 기능 (추가 기능)
+    // 백드롭 비디오 음소거 토글 기능
     const video = document.querySelector("#background-video"); // 비디오 요소 선택
     const toggleSoundButton = document.querySelector("#toggle-sound"); // 음소거 토글 버튼 선택
 
