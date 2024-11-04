@@ -445,3 +445,16 @@ h1{
 #toggle-sound:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
+
+/* 모바일 레이아웃: 세로로 배치 */
+@media (max-width: 768px) {
+    #project-container {
+        flex-direction: column; /* 세로로 배치 */
+        gap: 0; /* 섹션 간격 제거 */
+    }
+
+    .description-section,
+    .media-section {
+        width: 100%; /* 각각 전체 너비로 설정 */
+    }
+}
