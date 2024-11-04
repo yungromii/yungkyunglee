@@ -101,10 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
             item.style.display = isVisible || activeFilters.size === 0 ? 'block' : 'none';
         });
 
-        // 필터 후 Grid 레이아웃 강제 재적용 (works 페이지에만 적용)
+        // 필터 후 Grid 레이아웃 강제 재적용
         if (page === "works.html") {
             const worksSection = document.getElementById('works');
-            worksSection.style.display = 'grid';  // Grid 레이아웃 유지
+            worksSection.style.display = 'grid';  // works 페이지의 Grid 레이아웃 유지
+        } else if (page === "gallery.html") {
+            const gallerySection = document.getElementById('gallery');
+            gallerySection.style.display = 'grid';  // gallery 페이지의 Grid 레이아웃 유지
         }
     }
 });
