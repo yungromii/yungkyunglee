@@ -450,7 +450,7 @@ h1{
 @media (max-width: 1440px) {
     #project-container {
         flex-direction: column; /* 세로로 배치 */
-        gap: 0; /* 섹션 간격 제거 */
+        gap: 30px; /* 섹션 간격 제거 */
     }
 
     .description-section,
