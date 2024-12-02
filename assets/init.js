@@ -74,47 +74,42 @@ document.addEventListener("DOMContentLoaded", function () {
         setInterval(showNextSlide, 3000);
     }
 
-    // 페이지에 따라 필터 대상 선택 (works 또는 gallery)
+   // 페이지에 따라 필터 대상 선택 (works 또는 gallery)
     const items = page === "gallery.html"
         ? document.querySelectorAll('.gallery-item')
         : document.querySelectorAll('.work-item');
 
     const filters = document.querySelectorAll('#category-filters button');
-    let activeFilters = new Set(); // 중복 선택을 위한 Set
 
     // 필터 버튼 클릭 이벤트
     filters.forEach(button => {
         button.addEventListener('click', () => {
             const filter = button.getAttribute('data-filter');
 
-            if (activeFilters.has(filter)) {
-                activeFilters.delete(filter);
+            // 버튼이 이미 활성화되어 있으면 비활성화
+            if (button.classList.contains('active')) {
                 button.classList.remove('active');
-            } else {
-                activeFilters.add(filter);
-                button.classList.add('active');
+                applyFilter("all"); // "all" 필터로 전환
+                return;
             }
 
-            applyFilters(); // 필터 적용
+            // 다른 버튼 비활성화 및 현재 버튼 활성화
+            filters.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            applyFilter(filter); // 선택된 필터 적용
         });
     });
 
     // 필터 적용 함수
-    function applyFilters() {
+    function applyFilter(filter) {
         items.forEach(item => {
             const categories = item.getAttribute('data-categories').split(' ');
-            const isVisible = [...activeFilters].every(filter => categories.includes(filter));
-            item.style.display = isVisible || activeFilters.size === 0 ? 'block' : 'none';
+            item.style.display = categories.includes(filter) || filter === "all" ? 'block' : 'none';
         });
 
         // 필터 후 Grid 레이아웃 강제 재적용
-        if (page === "works.html") {
-            const worksSection = document.getElementById('works');
-            worksSection.style.display = 'grid';  // works 페이지의 Grid 레이아웃 유지
-        } else if (page === "gallery.html") {
-            const gallerySection = document.getElementById('gallery');
-            gallerySection.style.display = 'grid';  // gallery 페이지의 Grid 레이아웃 유지
-        }
+        const section = page === "gallery.html" ? document.getElementById('gallery') : document.getElementById('works');
+        section.style.display = 'grid';
     }
 
     // 백드롭 비디오 음소거 토글 기능
