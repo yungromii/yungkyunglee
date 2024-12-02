@@ -28,13 +28,13 @@ body {
     padding: 0;
     font-size: 16px;
     line-height: 1.5;
-    
+    background-color: grey;
     
 }
 
 /* 헤더 스타일 */
 header {
-    background: white;
+    
     padding: 10px 20px;
     position: fixed;
     top: 0;
@@ -43,8 +43,11 @@ header {
     justify-content: space-between; /* 이름은 왼쪽, 메뉴는 오른쪽 */
     align-items: center; /* 수직 중앙 정렬 */
     z-index: 100; /* 항상 위에 표시 */
-    font-size: 16px;
+    font-size: 15px;
+    text-transform: uppercase;
 }
+
+
 
 @media (min-width: 1440px) {
     #header {
@@ -104,7 +107,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: white;
-    background: grey;
+    text-decoration: none;
 }
 
 /* 활성화된 링크 스타일 */
@@ -116,7 +119,7 @@ nav ul li a:hover {
 
 .active-link {
     color: white;
-    background: red;
+    text-decoration: underline;
 }
 
 section {
@@ -160,7 +163,7 @@ section {
 
 .work-item {
     padding: 20px;
-    border: 1.5px solid black;
+    border: 1px solid black;
     box-shadow: 5px 5px 0 grey;
     text-align: center;
     background: white;
@@ -189,7 +192,7 @@ section {
 
 .gallery-item {
     
-   
+  
     height: auto; 
   max-width: 200px;
     padding: 0;
@@ -317,17 +320,17 @@ a:hover {
     gap: 10px;
     justify-content: center;
    flex-wrap: wrap;
-margin: 80px 0 20px; /* 헤더와 적절한 간격 유지 */
+margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     padding: 20px 30px 0;
 }
 
 #category-filters button {
-    padding: 10px 15px;
+    padding: 7px 11px;
     border: 1px solid black;
     border-radius: 12px;
     font-family: J;
     font-size: 14px;
-    background-color: white;
+    background-color: grey;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -339,7 +342,7 @@ margin: 80px 0 20px; /* 헤더와 적절한 간격 유지 */
 }
 
 #category-filters button.active {
-    background-color: grey;
+    background-color: white;
     color: black;
 }
 
