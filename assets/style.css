@@ -22,6 +22,24 @@
     unicode-range: U+0000-007F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
 }
 
+/* 기본 상태: 데스크톱 */
+.contact-info::after {
+    content: ""; /* 데스크톱에서는 약어 추가 없음 */
+}
+
+/* 모바일 화면 (768px 이하) */
+@media (max-width: 768px) {
+    .contact-info {
+        font-size: 0; /* 기존 텍스트 숨기기 */
+    }
+
+    .contact-info::after {
+        content: "YKL"; /* 모바일에서 약어 표시 */
+        font-size: 16px; /* 약어 텍스트 크기 설정 */
+        display: inline-block;
+    }
+}
+
 body {
     font-family: J;
     margin: 0;
