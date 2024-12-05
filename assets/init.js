@@ -24,19 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // 슬라이드쇼 기능 구현 (index.html에서만 동작)
     function showSlideshow() {
         const workItems = [
-            { src: "assets/vid/Rd.gif", alt: "Romi Drawing", caption: "Drawing Series - Romi" },
-            { src: "assets/vid/Ro.gif", alt: "Romi's Outfit", caption: "Romi's Outfit" },
-            { src: "assets/vid/Rw.gif", alt: "Romi World", caption: "Romi World" },
+           
+            { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "Romi's Outfit" },
             { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "Erotic Garden" },
-            { src: "assets/vid/Sa.gif", alt: "Street Angels", caption: "Street Angels" },
+            { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "Street Angels" },
             { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "Stalker / Romi" },
             { src: "assets/vid/C1.gif", alt: "Spring Festival", caption: "2024 씨네꼼 봄 영화제" },
             { src: "assets/vid/C.gif", alt: "Winter Festival", caption: "2024 씨네꼼 겨울 영화제" },
-            { src: "assets/vid/Mh.gif", alt: "Movie Redesign", caption: "Movie Redesign" },
             { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" },
-            { src: "assets/vid/Vd.gif", alt: "Visual Diary", caption: "Visual Diary" },
-            { src: "assets/vid/Tr.gif", alt: "Toon Render", caption: "Toon Render" },
-            { src: "assets/vid/Bud.gif", alt: "Buddha", caption: "Buddha Series" }
+            { src: "assets/vid/Bud1.gif", alt: "Buddha", caption: "Buddha Series" }
         ];
 
         const slideshowContainer = document.querySelector(".slideshow-container");
