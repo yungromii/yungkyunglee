@@ -127,7 +127,7 @@ nav ul li a:hover {
 
 /* 활성화된 링크 스타일 */
 .active-link::before {
-    content: "❤  ";
+    content: "★  ";
     font-size: 0.8em;
     color: black;
 }
