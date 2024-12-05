@@ -28,8 +28,23 @@ body {
     padding: 0;
     font-size: 14px;
     line-height: 1.5;
-    background-color: grey;
+  
     
+}
+
+body {
+    background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+    background-size: 200% 200%;
+    animation: gradientMove 5s infinite alternate;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 /* 헤더 스타일 */
@@ -330,7 +345,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     border-radius: 12px;
     font-family: J;
     font-size: 14px;
-    background-color: grey;
+   
     cursor: pointer;
     transition: background-color 0.3s;
     text-decoration: none;
