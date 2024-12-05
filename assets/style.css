@@ -236,26 +236,6 @@ object-fit: cover;
 }
 
 
-/* Imagee Container */
-#imagee-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.imagee-item img,
-.imagee-item video {
-    max-width: 800px;
-    height: auto;
-}
-
-.imagee-item {
-    max-width: 800px;
-    text-align: start;
-    z-index: 1;
-}
-
 /* 슬라이드쇼를 중앙에 정렬 */
 .slideshow-container {
     position: fixed;
@@ -439,10 +419,14 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 /* 이미지/영상 섹션 */
 .media-section {
     flex: 2;
-    display: grid;
-    grid-template-columns: 1fr; /* 한 줄에 한 개씩 배치 */
-    gap: 10px;
+  flex-wrap: wrap; /* 줄바꿈 허용 */
+    display: flex; /* 플렉스 박스로 설정 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 (필요에 따라 삭제 가능) */
+    row-gap: 20px;
+    column-gap: 10px;
      max-height: 100%; /* 전체 섹션의 높이를 넘어가지 않도록 설정 */
+
  
 }
 
@@ -450,6 +434,14 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     width: 100%;
     height: auto;
     display: block;
+}
+
+.card {
+    max-width: 130px;
+}
+
+.sticker {
+    max-width: 140px;
 }
 
 p{
@@ -461,7 +453,7 @@ p.no-margin {
 }
 
 h1{
-    margin-bottom: 4em;
+    margin-bottom: 3em;
 }
 
 .media-section p{
