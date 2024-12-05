@@ -58,17 +58,10 @@ header {
     justify-content: space-between; /* 이름은 왼쪽, 메뉴는 오른쪽 */
     align-items: center; /* 수직 중앙 정렬 */
     z-index: 100; /* 항상 위에 표시 */
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 
-
-
-@media (min-width: 1440px) {
-    #header {
-        font-size:18px !important;
-    }
-}
 
 /* 이름(이영경) 탭 스타일 */
 .contact-info {
@@ -179,7 +172,6 @@ section {
 .work-item {
     padding: 20px;
     border: 1px solid black;
-    box-shadow: 5px 5px 0 grey;
     text-align: center;
     background: white;
     border-radius: 10px;
@@ -269,6 +261,7 @@ object-fit: cover;
     .slideshow-container {
         top: calc(50% + 30px); /* 모바일에서 수직 위치 조정 */
         height: auto; /* 자동 높이 */
+        font-size: 80%;
     }
 
     .slideshow-container img {
