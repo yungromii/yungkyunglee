@@ -452,6 +452,8 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     max-width: 200px;
 }
 
+.toon{max-width: 360px}
+
 
 p{
     margin-bottom: 2em;
