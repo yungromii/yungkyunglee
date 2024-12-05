@@ -499,3 +499,27 @@ h1{
         width: 100%; /* 각각 전체 너비로 설정 */
     }
 }
+
+.collapsible-content {
+    display: none; /* 기본적으로 숨김 */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.collapsible-section.expanded .collapsible-content {
+    display: block; /* 펼쳤을 때 보임 */
+}
+
+.toggle-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}

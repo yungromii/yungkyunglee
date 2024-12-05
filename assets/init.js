@@ -123,4 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleSoundButton.textContent = video.muted ? "sound on" : "sound off";
         });
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector(".toggle-button");
+    const collapsibleContent = document.querySelector(".collapsible-content");
+
+    toggleButton.addEventListener("click", () => {
+        collapsibleContent.classList.toggle("expanded");
+        toggleButton.textContent = 
+            collapsibleContent.classList.contains("expanded") ? "접기" : "펼치기";
+    });
+});
 });
