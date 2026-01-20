@@ -499,6 +499,23 @@ height: auto;}
     height: 470px;
 }
 
+.nds {
+  zoom: 0.1583;
+}
+
+.ti-group {
+  display: flex;
+  flex-direction: column;   /* 세로로 쌓기 */
+  flex-wrap: wrap;          /* 높이 넘으면 옆 컬럼 */
+  
+ max-height: calc(100vh - 220px);    /* ⭐ 여기 조절 (몇 장 세로로 보일지) */
+  gap: 15px;
+
+  align-content: flex-start; /* 컬럼 왼쪽부터 차게 */
+
+    flex: 0 0 auto;     /* media-section 안에서 고정 덩어리 */
+  width: max-content; /* ⭐ 컬럼 전체 폭만큼 차지 */
+}
 
 /* .card {
     max-width: 130px;
