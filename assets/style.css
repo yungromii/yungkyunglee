@@ -215,7 +215,7 @@ section {
 #works .work-item img,
 #works .work-item video {
     
-    margin-bottom: 10px;
+    margin-bottom: 20px;
      width: 100%;
     height: auto;
     aspect-ratio: 877 / 620; /* 가로:세로 비율 설정 */
