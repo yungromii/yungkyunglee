@@ -134,4 +134,21 @@ document.addEventListener("DOMContentLoaded", function () {
             collapsibleContent.classList.contains("expanded") ? "접기" : "펼치기";
     });
 });
+
+const tabs = document.querySelectorAll('.project-tabs .tab');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.querySelector(`.tab-content[data-tab="${target}"]`).classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
 });

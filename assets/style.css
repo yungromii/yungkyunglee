@@ -573,3 +573,59 @@ h1{
         width: 100%; /* 각각 전체 너비로 설정 */
     }
 }
+
+
+
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: flex; /* 너 media-section이 flex라서 */
+}
+
+.project-tabs {
+   position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+
+  font-size: 14px;
+  letter-spacing: 0.3em;
+
+  z-index: 200;
+}
+
+.project-tabs .tab {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.project-tabs .tab:hover {
+  opacity: 0.6;
+}
+
+.project-tabs .tab.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.project-tabs .tab::after {
+  content: attr(data-label);
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.project-tabs .tab:hover::after {
+  opacity: 0.6;
+}
