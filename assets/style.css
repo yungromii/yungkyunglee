@@ -33,6 +33,12 @@ a{
 
 /* 모바일 화면 (768px 이하) */
 @media (max-width: 768px) {
+
+     #project-container {
+      flex-direction: column;
+      
+        gap: 30px; /* 섹션 간격 제거 */
+    }
     .contact-info {
         font-size: 0; /* 기존 텍스트 숨기기 */
     }
@@ -44,7 +50,11 @@ a{
     }
 
     img {
-        zoom: 0.5;
+        zoom: 0.4;
+    }
+
+    .media-section{
+        gap:7px!important; 
     }
 }
 
@@ -65,13 +75,15 @@ body {
   display: inline-flex;
   width: max-content;
   max-width: 100% ;
+
 }
 
 .imagee-item img {
   width: auto;
-  max-width: calc(100%-30px) !important;
+  max-width: 100%;
   height: auto;
   display: block;
+  
 }
 
 
@@ -427,7 +439,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     justify-content: flex-start;
     line-height: 1.5;
     max-height: 100%; /* 전체 섹션의 높이를 넘어가지 않도록 설정 */
-   
+   padding: 10px;
 
     text-align: left;
 }
@@ -444,7 +456,8 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
   
   flex: 1;        /* ⭐ 남은 공간 전부 */
   min-width: 0;  /* ⭐ 중요 (모바일 반토막 방지) */
-  gap: 15px;
+ padding:10px;
+ gap:15px;
 
   p{
     text-align: left;
@@ -490,7 +503,7 @@ height: auto;}
 }
 
 .wideposter img{
-    max-width: 800px;
+    width: 800px;
     height: auto;
 }
 
@@ -563,10 +576,7 @@ h1{
 
 /* 모바일 레이아웃: 세로로 배치 */
 @media (max-width: 1024px) {
-    #project-container {
-      flex-direction: column;
-        gap: 30px; /* 섹션 간격 제거 */
-    }
+   
 
    .description-section {
     flex: none;
@@ -579,7 +589,7 @@ h1{
   }
 
   .media-section {
-    flex-direction: column; /* 세로로 배치 */
+     
     width: 100%;
     min-width: 0;
   }
