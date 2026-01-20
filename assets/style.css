@@ -564,7 +564,7 @@ h1{
 /* 모바일 레이아웃: 세로로 배치 */
 @media (max-width: 1024px) {
     #project-container {
-      
+      flex-direction: column;
         gap: 30px; /* 섹션 간격 제거 */
     }
 
