@@ -264,6 +264,17 @@ object-fit: cover;
         width: 100%;
         height: auto;
     }
+
+ 
+  .media-section {
+    transform: scale(0.52);
+  }
+
+  .description-section {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
 }
 
 /* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
