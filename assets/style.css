@@ -51,6 +51,23 @@ body {
 }
 
 
+
+.imagee-item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  width: max-content;
+  max-width: 100% ;
+}
+
+.imagee-item img {
+  width: auto;
+  max-width: calc(100%-30px) !important;
+  height: auto;
+  display: block;
+}
+
+
+
 @keyframes gradientMove {
     0% {
         background-position: 0% 50%;
@@ -265,11 +282,6 @@ object-fit: cover;
         height: auto;
     }
 
- 
-  .media-section {
-    transform: scale(0.52);
-    transform-origin: top left;
-  }
 
   .description-section {
     transform: scale(0.9);
@@ -418,7 +430,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 /* 설명 섹션 */
 .description-section {
      flex: 0 0 320px;   /* 줄지 않고, 늘지 않고, 320px */
-  max-width: 320px;
+  max-width: 320px !important;
   text-align: left;
     display: flex;
     flex-direction: column;
@@ -439,31 +451,29 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 
 /* 이미지/영상 섹션 */
 .media-section {
-   
+   display: flex;
   flex: 1;        /* ⭐ 남은 공간 전부 */
   min-width: 0;  /* ⭐ 중요 (모바일 반토막 방지) */
 
+  p{
+    text-align: left;
+}
+
+ flex-wrap: wrap;      /* ⭐ 줄바꿈 */
+  align-items: flex-start;
+  gap: 20px;
   
-    display: flex; /* 플렉스 박스로 설정 */
-     overflow-x: auto;     /* 가로 스크롤 */
   overflow-y: hidden;
-  white-space: nowrap;
 
-   overflow-x: auto;     /* 가로 스크롤 */
-  overflow-y: hidden;
-  white-space: nowrap;
 
-  gap: 15px;
-   
-  /*  row-gap: 20px;
-    column-gap: 20px;
-     max-height: 100%; /* 전체 섹션의 높이를 넘어가지 않도록 설정 */
 
  
+   
+
 }
 
 .media-section img{
-   width: auto;
+  
   height: auto;
   flex: 0 0 auto;
    
@@ -500,13 +510,13 @@ height: auto;}
 }
 
 .wideposter img{
-    width: 800px;
+    max-width: 800px;
     height: auto;
 }
 
 .long img{
     width: auto;
-    height: 500px;
+    max-height: 500px;
 }
 
 .long2 img{
@@ -569,9 +579,6 @@ h1{
     margin-bottom: 2em;
 }
 
-.media-section p{
-    text-align: left;
-}
 
 #toggle-sound {
     position: absolute;
@@ -600,10 +607,28 @@ h1{
         gap: 30px; /* 섹션 간격 제거 */
     }
 
-    .description-section,
-    .media-section {
-        width: 100%; /* 각각 전체 너비로 설정 */
-    }
+   .description-section {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .media-section {
+    flex-direction: column; /* 세로로 배치 */
+    width: 100%;
+    min-width: 0;
+  }
+.imagee-item img {
+    max-width: 100%;
+  }
+
+  .imagee-item {
+    width: 100%;
+  }
 }
 
 
