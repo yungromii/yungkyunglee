@@ -38,6 +38,10 @@
         font-size: 16px; /* 약어 텍스트 크기 설정 */
         display: inline-block;
     }
+
+    img {
+        zoom: 0.5;
+    }
 }
 
 body {
@@ -327,11 +331,11 @@ object-fit: cover;
 
 
 
-/* 슬라이드 호버 시 캡션 표시 */
+/*
 .slideshow-container .slide:hover .slideshow-caption {
     opacity: 1;
 }
-/*
+
     
     .slideshow-container .slide:hover .slideshow-caption {
         opacity: 1; 
@@ -439,7 +443,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
     line-height: 1.5;
     max-height: 100%; /* 전체 섹션의 높이를 넘어가지 않도록 설정 */
    
-    padding-right: 10px; /* 스크롤바와 텍스트 간 여백 */
+
     text-align: left;
 }
 
@@ -452,7 +456,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 
 /* 이미지/영상 섹션 */
 .media-section {
-   display: flex;
+  
   flex: 1;        /* ⭐ 남은 공간 전부 */
   min-width: 0;  /* ⭐ 중요 (모바일 반토막 방지) */
   gap: 15px;
@@ -462,15 +466,9 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 }
 
  flex-wrap: wrap;      /* ⭐ 줄바꿈 */
-  align-items: flex-start;
-  
-  
-  overflow-y: hidden;
-
-
-
  
-   
+  justify-content: center;
+  overflow-y: hidden;
 
 }
 
@@ -497,11 +495,6 @@ height: 291px;}
     height: auto;
 }
 
-.mainimage{
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
-}
 
 .book img{width: 270px;
 height: auto;}
@@ -586,7 +579,7 @@ h1{
 /* 모바일 레이아웃: 세로로 배치 */
 @media (max-width: 1024px) {
     #project-container {
-        flex-direction: column; /* 세로로 배치 */
+      
         gap: 30px; /* 섹션 간격 제거 */
     }
 
