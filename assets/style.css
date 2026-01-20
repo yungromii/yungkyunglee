@@ -180,30 +180,11 @@ section {
     overflow: auto;
     margin: 0 auto;
     max-width: 1200px; /* 최대 너비 제한 */
-    grid-template-columns: 1fr !important;
+   
 }
 
 
-/* 태블릿 및 작은 노트북: 2개씩 표시 */
-@media (min-width: 1440px) {
-    #works {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
 
-/* 일반 노트북 및 데스크탑: 3개씩 표시 */
-@media (min-width: 3000px) {
-    #works {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* 큰 화면(모니터): 4개씩 표시 */
-@media (min-width: 4000px) {
-    #works {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
 
 .work-item {
     padding: 20px;
