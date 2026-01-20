@@ -479,6 +479,26 @@ height: 291px;}
 .book img{width: 270px;
 height: auto;}
 
+.sticker img {
+    width: 360px;
+    height: auto;
+}
+
+.wideposter img{
+    width: 800px;
+    height: auto;
+}
+
+.long img{
+    width: auto;
+    height: 500px;
+}
+
+.long2 img{
+    width: auto;
+    height: 470px;
+}
+
 
 /* .card {
     max-width: 130px;
@@ -487,9 +507,7 @@ height: auto;}
 
 
 
-.sticker {
-    max-width: 220px;
-}
+
 
 .realsticker {
     max-width: 240px;
