@@ -85,7 +85,6 @@ body {
   max-width: 100%;
   height: auto;
   display: block;
-  
 }
 
 
@@ -290,13 +289,7 @@ object-fit: cover;
 
         
 
-@media (max-width: 412px){
-    section {
-    padding: 55px 10px;
-   
-}
-    
-}
+
 
 
 /* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
@@ -492,7 +485,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 
 .card img{
     width: 207px;
-height: 291px;}
+height: auto;}
 
 .poster img{
     width: 400px;
@@ -598,6 +591,7 @@ h1{
     flex: none;
     width: 100%;
     max-width: 100%;
+    height: auto;
   }
 
   .divider {
@@ -609,10 +603,10 @@ h1{
     width: 100%;
     min-width: 0;
   }
-.imagee-item img {
+/* .imagee-item img {
     max-width: calc(100% - 20px);
-    
-  }
+     height: auto;
+  } */
 
   
 }
@@ -671,4 +665,18 @@ h1{
 
 .project-tabs .tab:hover::after {
   opacity: 0.6;
+}
+
+@media (max-width: 412px){
+    section {
+    padding: 55px 10px;
+   
+}
+
+.card{
+width: 130px;
+height: auto;
+
+}
+    
 }
