@@ -395,6 +395,7 @@ section {
 
 /* 미디어 섹션 MAIN!! */
 .media-section { 
+    display: flex;
    flex: 0 1 auto;        /* ✅ 남는 폭을 억지로 먹지 않음 (grow=0) */
   width: fit-content;    /* ✅ 내용(이미지/비디오) 너비만큼 */
   max-width: calc(100% - 480px);       /* ✅ 너무 커지면 화면 안에서 제한 */
@@ -408,6 +409,8 @@ section {
 
 .sub {
 max-width: 100%;
+justify-content: center;
+
 }
 
 /* 모바일 화면 (768px 이하) */
