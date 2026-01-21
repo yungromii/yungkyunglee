@@ -268,6 +268,7 @@ h1{margin-bottom: 0.2em; font-size:21px;}
 
 .text-divider {
   width: calc(100% - 200px);
+  max-width: 300px;
   height: 1px;
  background-color: black;
   margin: 20px 0;  /* 위아래 간격 */
@@ -365,8 +366,9 @@ object-fit: cover;
 
 
 section {
-    padding: 70px 20px;
-    text-align: center;
+    padding: 70px 30px;
+    text-align: left;
+  
 }
 
 /* 프로젝트 페이지 전체 컨테이너 */
@@ -374,29 +376,61 @@ section {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh; /* 전체 섹션 높이 설정 */
+   justify-content: flex-end;   /* ✅ 전체를 우측으로 */
+  align-items: flex-start;
+  gap: 30px;
 }
 
 /* 설명 섹션 */
 .description-section {
    
-  max-width: 400px;
+  max-width: 360px;
   text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     line-height: 1.5;
-    padding: 0 15px;
 }
 
 
 /* 미디어 섹션 MAIN!! */
 .media-section { 
-   
-    padding:0 15px;
+   flex: 0 1 auto;        /* ✅ 남는 폭을 억지로 먹지 않음 (grow=0) */
+  width: fit-content;    /* ✅ 내용(이미지/비디오) 너비만큼 */
+  max-width: calc(100% - 480px);       /* ✅ 너무 커지면 화면 안에서 제한 */
+  min-width: 0;
+
     align-items: flex-start;
     flex-wrap: wrap;      /* ⭐ 줄바꿈 */ 
     justify-content: center;
     overflow-y: hidden;
+}
+
+.sub {
+max-width: 100%;
+}
+
+/* 모바일 화면 (768px 이하) */
+@media (max-width: 768px) {
+
+ .description-section {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+     #project-container {
+      flex-direction: column;
+      min-height: auto;
+    }
+
+     .media-section{
+    flex: 0 0 auto;     /* ⭐ 모바일에서는 더 이상 세로 공간 먹지 않게 */
+   max-width: 100%;
+  }
+   
+  .divider{ display:none; }
 }
 
 .media-section video{
@@ -425,23 +459,7 @@ zoom: 0.1583;
   max-width: 100% ;
 }
 
-/* 모바일 화면 (768px 이하) */
-@media (max-width: 768px) {
 
-     .description-section {
-    flex: none;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-     #project-container {
-      flex-direction: column;
-      gap: 30px; /* 섹션 간격 제거 */
-    }
-   
-
-}
 
 
 
