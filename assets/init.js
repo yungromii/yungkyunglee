@@ -25,14 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function showSlideshow() {
         const workItems = [
            
-            { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "Romi's Outfit" },
-            { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "Erotic Garden" },
-            { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "Street Angels" },
-            { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "Stalker / Romi" },
+            { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "ROMI's OUTFIT" },
+            { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "EROTIC GARDEN" },
+            { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "STREET ANGELS" },
+            { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "STALKER" },
             { src: "assets/vid/C1.gif", alt: "Spring Festival", caption: "2024 씨네꼼 봄 영화제" },
             { src: "assets/vid/C.gif", alt: "Winter Festival", caption: "2024 씨네꼼 겨울 영화제" },
-            { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" },
-            { src: "assets/vid/Bud1.gif", alt: "Buddha", caption: "Buddha Series" }
+            { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" }
         ];
 
         const slideshowContainer = document.querySelector(".slideshow-container");

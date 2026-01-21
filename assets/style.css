@@ -4,58 +4,10 @@
     box-sizing: border-box;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-@font-face {
-    font-family: Aptos;
-    src: url(aptos.ttf);
-    unicode-range: U+0000-007F;
-}
-
-@font-face {
-    font-family: A1;
-    src: url(GothicA1-Regular.ttf);
-    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
-}
-
 @font-face {
     font-family: J;
     src: url(J.Regular.otf) format('opentype');
     unicode-range: U+0000-007F, U+1100-11FF, U+3130-318F, U+AC00-D7AF;
-}
-
-/* 기본 상태: 데스크톱 */
-.contact-info::after {
-    content: ""; /* 데스크톱에서는 약어 추가 없음 */
-}
-
-/* 모바일 화면 (768px 이하) */
-@media (max-width: 768px) {
-
-
-
-     #project-container {
-      flex-direction: column;
-      
-        gap: 30px; /* 섹션 간격 제거 */
-    }
-    .contact-info {
-        font-size: 0; /* 기존 텍스트 숨기기 */
-    }
-
-    .contact-info::after {
-        content: "YKL"; /* 모바일에서 약어 표시 */
-        font-size: 16px; /* 약어 텍스트 크기 설정 */
-        display: inline-block;
-    }
-
- 
-
-    .media-section{
-        gap:7px!important; 
-    }
 }
 
 body {
@@ -64,8 +16,332 @@ body {
     padding: 0;
     font-size: 14px;
     line-height: 1.5;
-  background: #f5f5f5;
-  
+  background: #f5f5f5;  
+}
+
+/* 헤더 스타일 */
+header {
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex; /* 수평 정렬 */
+    justify-content: space-between; /* 이름은 왼쪽, 메뉴는 오른쪽 */
+    align-items: center; /* 수직 중앙 정렬 */
+    z-index: 100; /* 항상 위에 표시 */
+    font-size: 14px;
+    text-transform: uppercase;
+}
+/* 이름(이영경) 탭 스타일 */
+.contact-info {
+    cursor: pointer; 
+}
+/* 호버 박스 스타일 */
+.contact-info .hover-box {
+    display: none;
+    position: absolute;
+    top: 10px; 
+    left: 10px;
+    min-width: 150px;
+    max-width: 200px;
+    border: 1px solid black;
+   cursor: pointer;
+    background-color: #f5f5f5;
+    padding: 10px;
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    overflow-wrap: break-word; /* 긴 단어 줄바꿈 */
+    z-index: 10;
+    line-height: 1.6; /* 줄 간격 조정 */
+    font-size: 12px;
+}
+/* 이름 탭을 호버하면 박스 표시 */
+.contact-info:hover .hover-box {
+    display: block;
+    cursor: pointer;
+
+}
+/* 네비게이션 메뉴 스타일 */
+nav ul {
+    list-style: none;
+    display: flex; /* 수평 정렬 */
+    gap: 30px; /* 메뉴 간 간격 */
+    margin: 0;
+    padding: 0;
+}
+/* 네비게이션 링크 스타일 */
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* work, home 헤더 메뉴 눌린 거 */
+.active-link::before {
+    content: "★  ";
+    font-size: 0.8em;
+    color: black;
+}
+.active-link {
+    color: black;
+    text-decoration: underline;
+}
+
+/* 상세페이지 페이지 번호 관련 */
+.tab-content {
+display: none;
+}
+
+.tab-content.active {
+display: flex; /* 너 media-section이 flex라서 */
+}
+
+.project-tabs {
+    position: fixed;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+justify-content: center;
+gap: 40px;
+font-size: 14px;
+letter-spacing: 0.3em;
+z-index: 200;
+}
+
+.project-tabs .tab {
+opacity: 0.3;
+cursor: pointer;
+transition: opacity 0.3s ease;
+}
+
+.project-tabs .tab:hover {
+opacity: 0.6;
+}
+
+.project-tabs .tab.active {
+opacity: 1;
+text-decoration: underline;
+text-underline-offset: 4px;
+}
+
+.project-tabs .tab::after {
+content: attr(data-label);
+display: block;
+font-size: 10px;
+letter-spacing: 0.1em;
+opacity: 0;
+transition: 0.3s;
+text-decoration: none;
+}
+
+.project-tabs .tab:hover::after {
+  opacity: 0.6; }
+
+/* 구분선 */
+.divider {
+    width: 1px;
+    background-color: #f5f5f5;
+   
+}
+
+/* 카테고리 필터 버튼 스타일 */
+#category-filters {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+   flex-wrap: wrap;
+margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
+    padding: 20px 30px 0;
+}
+#category-filters button {
+    padding: 7px 11px;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-family: J;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    color: black;
+}
+#category-filters button :hover {
+   
+    background: white !important;
+    cursor: pointer !important;
+}
+#category-filters button.active {
+    background-color: white;
+    color: black;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* 기본 상태: 데스크톱 */
+.contact-info::after {
+    content: ""; /* 데스크톱에서는 약어 추가 없음 */
+}
+
+/* 슬라이드쇼를 중앙에 정렬 */
+.slideshow-container {
+    position: fixed;
+    top: calc(50% + 5px); /* 화면 높이의 50% */
+    left: 50%; /* 화면 너비의 50% */
+    transform: translate(-50%, -50%); /* 정확히 중앙 정렬 */
+    width: 70vw; /* 뷰포트 전체 너비 */
+    max-height: calc(100vh - 60px); /* 헤더 높이를 뺀 최대 높이 */
+    overflow: hidden;
+    z-index: -1;
+    background: none;
+}
+/* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
+.slideshow-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지 비율 유지하며 화면 채움 */
+}
+
+/* 슬라이드 숨김 및 활성 슬라이드 표시 */
+.slideshow-container .slide {
+    display: none;
+    text-align: center;
+}
+.slideshow-container .active-slide {
+    display: block;
+}
+
+.slideshow-caption {
+    position: absolute;
+    bottom: 5%;
+    left: 12%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    text-align: left;
+    max-width: 80%; 
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; 
+    word-break: break-word;
+} 
+.slideshow-container .slide:hover .slideshow-caption {
+    opacity: 1;
+}
+/* 모바일 환경에서 슬라이드 쇼 높이 보정 */
+@media (max-width: 767px) {
+    .slideshow-container {
+        top: calc(50% + 30px); /* 모바일에서 수직 위치 조정 */
+        height: auto; /* 자동 높이 */
+        font-size: 80%;
+    }
+
+    .slideshow-container img {
+        object-fit: contain; /* 이미지 왜곡 방지 */
+        width: 100%;
+        height: auto;
+    }
+}
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: underline; 
+        color: black;
+        text-underline-offset: 3px;
+        cursor: pointer;
+    }
+
+p{margin-bottom: 1em;}
+p.no-margin {margin-bottom: 0;}
+h1{margin-bottom: 0.2em; font-size:21px;}
+
+.text-divider {
+  width: calc(100% - 200px);
+  height: 1px;
+ background-color: black;
+  margin: 20px 0;  /* 위아래 간격 */
+}
+
+/* works 섹션 스타일 */
+#works {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 비디오 크기를 화면에 맞추기 */
+  z-index: -1; /* 백그라운드 뒤에 오도록 설정 */
+}
+
+/* Works 페이지 설정 */
+#works {
+    display: grid;
+    gap: 20px;
+    overflow: auto;
+    margin: 0 auto;
+    max-width: 1200px; /* 최대 너비 제한 */   
+}
+
+.work-item {
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    font-size: 12px; 
+}
+
+#works .work-item img,
+#works .work-item video {
+       margin-bottom: 16px;
+     width: 100%;
+    height: auto;
+    aspect-ratio: 877 / 620; /* 가로:세로 비율 설정 */
+    overflow: hidden; /* 초과 부분 숨김 */
+    object-fit: cover; /* 비율을 유지하지 않고 컨테이너를 채움 */
+    object-position: center; /* 중앙을 기준으로 잘림 */
+}
+
+/* Gallery Section */
+#gallery .gallery-container {
+     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+     align-items: start;
+    align-content: flex-start;
+       -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 0 30px ;
+}
+
+.gallery-item {padding: 0;}
+
+.gallery-item img,
+.gallery-item video {
+     width: 100%;
+    height: 100%;
+object-fit: cover;
 }
 
 
@@ -88,393 +364,39 @@ body {
 }
 
 
-
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-/* 헤더 스타일 */
-header {
-    
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex; /* 수평 정렬 */
-    justify-content: space-between; /* 이름은 왼쪽, 메뉴는 오른쪽 */
-    align-items: center; /* 수직 중앙 정렬 */
-    z-index: 100; /* 항상 위에 표시 */
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
-
-/* 이름(이영경) 탭 스타일 */
-.contact-info {
-    cursor: pointer;
-   
-}
-
-/* 호버 박스 스타일 */
-.contact-info .hover-box {
-    display: none;
-    position: absolute;
-    top: 10px; 
-    left: 10px;
-    min-width: 150px;
-    max-width: 200px;
-    border: 1px solid black;
-   cursor: pointer;
-    background-color: #f5f5f5;
-    padding: 10px;
-    white-space: normal; /* 텍스트 줄바꿈 허용 */
-    overflow-wrap: break-word; /* 긴 단어 줄바꿈 */
-    z-index: 10;
-    line-height: 1.6; /* 줄 간격 조정 */
-    font-size: 12px;
-}
-
-
-
-/* 이름 탭을 호버하면 박스 표시 */
-.contact-info:hover .hover-box {
-    display: block;
-    cursor: pointer;
-
-}
-
-/* 네비게이션 메뉴 스타일 */
-nav ul {
-    list-style: none;
-    display: flex; /* 수평 정렬 */
-    gap: 30px; /* 메뉴 간 간격 */
-    margin: 0;
-    padding: 0;
-}
-
-/* 네비게이션 링크 스타일 */
-nav ul li a {
-    color: black;
-    text-decoration: none;
-   
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 활성화된 링크 스타일 */
-.active-link::before {
-    content: "★  ";
-    font-size: 0.8em;
-    color: black;
-}
-
-.active-link {
-    color: black;
-    text-decoration: underline;
-}
-
 section {
     padding: 70px 20px;
     text-align: center;
-}
-
-
-
-/* Works Section */
-#works {
-    display: grid;
-    gap: 20px;
-    overflow: auto;
-    margin: 0 auto;
-    max-width: 1200px; /* 최대 너비 제한 */
-   
-}
-
-
-
-
-.work-item {
-    margin: 0 10px;
-    padding: 20px;
-    border: 1px solid black;
-    text-align: center;
-    background: white;
-    border-radius: 10px;
-    font-size: 12px;
-   
-}
-
-#works .work-item img,
-#works .work-item video {
-    
-    margin-bottom: 16px;
-     width: 100%;
-    height: auto;
-    aspect-ratio: 877 / 620; /* 가로:세로 비율 설정 */
-    overflow: hidden; /* 초과 부분 숨김 */
-    object-fit: cover; /* 비율을 유지하지 않고 컨테이너를 채움 */
-    object-position: center; /* 중앙을 기준으로 잘림 */
-}
-
-/* Gallery Section */
-#gallery .gallery-container {
-     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-     align-items: start;
-    align-content: flex-start;
-       -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    padding: 0 30px ;
-}
-
-.gallery-item {
-    
-  
-    height: auto; 
-  max-width: 150px;
-    padding: 0;
-margin: 15px;
-    
-    
-}
-
-#gallery .gallery-item img,
-#gallery .gallery-item video {
-     width: 100%;
-    height: 100%;
-object-fit: cover;
-}
-
-
-/* 슬라이드쇼를 중앙에 정렬 */
-.slideshow-container {
-    position: fixed;
-    top: calc(50% + 5px); /* 화면 높이의 50% */
-    left: 50%; /* 화면 너비의 50% */
-    transform: translate(-50%, -50%); /* 정확히 중앙 정렬 */
-    width: 70vw; /* 뷰포트 전체 너비 */
-    max-height: calc(100vh - 60px); /* 헤더 높이를 뺀 최대 높이 */
-    overflow: hidden;
-    z-index: -1;
-    background: none;
-}
-
-/* 모바일 환경에서 높이 보정 */
-@media (max-width: 768px) {
-    .slideshow-container {
-        top: calc(50% + 30px); /* 모바일에서 수직 위치 조정 */
-        height: auto; /* 자동 높이 */
-        font-size: 80%;
-    }
-
-    .slideshow-container img {
-        object-fit: contain; /* 이미지 왜곡 방지 */
-        width: 100%;
-        height: auto;
-    }
-
-
-}
-
-        
-
-
-
-
-/* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
-.slideshow-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 이미지 비율 유지하며 화면 채움 */
-}
-
-/* 슬라이드 숨김 및 활성 슬라이드 표시 */
-.slideshow-container .slide {
-    display: none;
-    text-align: center;
-}
-
-.slideshow-container .active-slide {
-    display: block;
-}
-
-/* .slideshow-caption {
-    position: absolute;
-    bottom: 5%;
-    left: 12%;
-    transform: translateX(-50%);
-    padding: 20px;
-    border: 1px solid black;
-    box-shadow: 5px 5px 0 grey;
-    font-size: 1rem;
-    text-align: left;
-    max-width: 80%; 
-    background-color: white;
-    opacity: 0; 
-    transition: opacity 0.5s ease-in-out; 
-    word-break: break-word;
-} 
-*/
-
-
-
-/*
-.slideshow-container .slide:hover .slideshow-caption {
-    opacity: 1;
-}
-
-    
-    .slideshow-container .slide:hover .slideshow-caption {
-        opacity: 1; 
-    }
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    a:hover {
-        text-decoration: underline; 
-        color: black;
-        text-underline-offset: 3px;
-        cursor: pointer;
-    }
-
-    */
-
-/* 필터 버튼 스타일 */
-#category-filters {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-   flex-wrap: wrap;
-margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
-    padding: 20px 30px 0;
-}
-
-#category-filters button {
-    padding: 7px 11px;
-    border: 1px solid black;
-    border-radius: 12px;
-    font-family: J;
-    font-size: 14px;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    color: black;
-}
-#category-filters button :hover {
-   
-    background: white !important;
-    cursor: pointer !important;
-}
-
-#category-filters button.active {
-    background-color: white;
-    color: black;
-}
-
-/* works 섹션 스타일 */
-#works {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-#video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 비디오 크기를 화면에 맞추기 */
-  z-index: -1; /* 백그라운드 뒤에 오도록 설정 */
-}
-
-.video-container {
-    position: relative;
-   
-}
-
-.video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    z-index: -1; /* 비디오가 뒤에 표시되도록 설정 */
 }
 
 /* 프로젝트 페이지 전체 컨테이너 */
 #project-container {
     display: flex;
     flex-wrap: wrap;
-    
     min-height: 100vh; /* 전체 섹션 높이 설정 */
-}
-
-.title-section {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 /* 설명 섹션 */
 .description-section {
    
-  max-width: 400px !important;
+  max-width: 400px;
   text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     line-height: 1.5;
-    text-align: left;
     padding: 0 15px;
 }
 
-/* 구분선 */
-.divider {
-    width: 1px;
-    background-color: #f5f5f5;
+
+/* 미디어 섹션 MAIN!! */
+.media-section { 
    
-}
-
-/* 이미지/영상 섹션 */
-.media-section {
-  
-  flex: 1;        /* ⭐ 남은 공간 전부 */
-  min-width: 0;  /* ⭐ 중요 (모바일 반토막 방지) */
- padding:0 15px;
- gap:15px;
-
-  p{
-    text-align: left;
-}
-
- flex-wrap: wrap;      /* ⭐ 줄바꿈 */
- 
-  justify-content: center;
-  overflow-y: hidden;
-
-}
-
-.media-section img{
-  
-  height: auto;
-  flex: 0 0 auto;
-   
+    padding:0 15px;
+    align-items: flex-start;
+    flex-wrap: wrap;      /* ⭐ 줄바꿈 */ 
+    justify-content: center;
+    overflow-y: hidden;
 }
 
 .media-section video{
@@ -484,49 +406,16 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
    
 }
 
-.card img{
-    width: 207px;
-height: auto;}
-
-.poster img{
-    width: 400px;
-    height: auto;
-}
-
-
-.book img{width: 270px;
-height: auto;}
-
-.sticker img {
-    width: 360px;
-    height: auto;
-}
-
-.wideposter img{
-    width: 800px;
-    height: auto;
-}
-
-.long img{
-    width: auto;
-    max-height: 500px;
-}
-
-.long2 img{
-    width: auto;
-    height: 470px;
-}
+    .card img{width: 207px; height: auto;}  .poster img{width: 400px; height: auto;}    .book img{width: 270px; height: auto;}    .sticker img {width: 360px; height: auto;}   .wideposter img{width: 800px; height: auto;}    .long img{width: auto; max-height: 500px;}  .long2 img{width: auto; height: 470px;}
 
 .nds {
-  zoom: 0.1583;
+zoom: 0.1583;
 }
 
 .ti-group {
   display: flex;
-
   flex-wrap: wrap;          /* 높이 넘으면 옆 컬럼 */
-  
-justify-content: center;
+  justify-content: center;
   gap: 10px;
 
   align-content: flex-start; /* 컬럼 왼쪽부터 차게 */
@@ -536,148 +425,53 @@ justify-content: center;
   max-width: 100% ;
 }
 
-/* .card {
-    max-width: 130px;
+/* 모바일 화면 (768px 이하) */
+@media (max-width: 768px) {
 
-    .mainimage img{max-width: 480px;}
-
-
-
-
-
-.realsticker {
-    max-width: 240px;
-}
-
-.toon{max-width: 360px}
-
-}
-
-
-
-*/
-
-
-
-
-
-p{
-    margin-bottom: 1em;
-}
-
-p.no-margin {
-    margin-bottom: 0; /* 특정 p 태그만 margin 제거 */
-}
-
-h1{
-     margin-bottom: 0.2em;
-    font-size:21px;
-}
-
-.text-divider {
-  width: calc(100% - 200px);
-  height: 1px;
- 
- background-color: black;
-  margin: 20px 0;  /* 위아래 간격 */
-}
-
-
-
-/* 모바일 레이아웃: 세로로 배치 */
-@media (max-width: 1024px) {
-   
-
-   .description-section {
+     .description-section {
     flex: none;
     width: 100%;
     max-width: 100%;
     height: auto;
   }
 
-  .divider {
-    display: none;
-  }
+     #project-container {
+      flex-direction: column;
+      gap: 30px; /* 섹션 간격 제거 */
+    }
+   
 
-  .media-section {
-     
-    width: 100%;
-    min-width: 0;
-  }
-/* .imagee-item img {
-    max-width: calc(100% - 20px);
-     height: auto;
-  } */
-
-  
 }
 
 
 
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: flex; /* 너 media-section이 flex라서 */
-}
-
-.project-tabs {
-   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-
-  font-size: 14px;
-  letter-spacing: 0.3em;
-
-  z-index: 200;
-}
-
-.project-tabs .tab {
-  opacity: 0.3;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.project-tabs .tab:hover {
-  opacity: 0.6;
-}
-
-.project-tabs .tab.active {
-  opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.project-tabs .tab::after {
-  content: attr(data-label);
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.project-tabs .tab:hover::after {
-  opacity: 0.6;
-}
 
 @media (max-width: 412px){
-    section {
-    padding: 55px 10px;
-   
-}
 
-.card{
-width: 130px;
-height: auto;
+    .contact-info {
+        font-size: 0; /* 기존 텍스트 숨기기 */
+    }
+    .contact-info::after {
+        content: "YKL"; /* 모바일에서 약어 표시 */
+        font-size: 16px; /* 약어 텍스트 크기 설정 */
+        display: inline-block;
+    }
 
-}
+    section {padding: 55px 10px;}
+
+    .card {width: 130px; height: auto;}
     
+}
+
+/*상세페이지 비디오 설정 관련*/
+.video-container {
+    position: relative;
+    line-height: 0;
+}
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    z-index: -1; /* 비디오가 뒤에 표시되도록 설정 */
 }
