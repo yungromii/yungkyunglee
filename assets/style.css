@@ -204,6 +204,7 @@ section {
 
 
 .work-item {
+    margin: 0 10px;
     padding: 20px;
     border: 1px solid black;
     text-align: center;
@@ -216,7 +217,7 @@ section {
 #works .work-item img,
 #works .work-item video {
     
-    margin-bottom: 20px;
+    margin-bottom: 16px;
      width: 100%;
     height: auto;
     aspect-ratio: 877 / 620; /* 가로:세로 비율 설정 */
