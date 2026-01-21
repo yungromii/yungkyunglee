@@ -49,9 +49,7 @@ a{
         display: inline-block;
     }
 
-    img {
-        zoom: 0.4;
-    }
+ 
 
     .media-section{
         gap:7px!important; 
@@ -75,6 +73,8 @@ body {
   display: inline-flex;
   width: max-content;
   max-width: 100% ;
+    justify-content: center;
+  align-items: center;
 
 }
 
@@ -183,7 +183,7 @@ nav ul li a:hover {
 }
 
 section {
-    padding: 70px 20px;
+    padding: 70px 0;
     text-align: center;
 }
 
@@ -283,11 +283,6 @@ object-fit: cover;
         height: auto;
     }
 
-
-  .description-section {
-    transform: scale(0.9);
-    transform-origin: top left;
-  }
 
 }
 
@@ -432,16 +427,14 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
 /* 설명 섹션 */
 .description-section {
    
-  max-width: 320px !important;
+  max-width: 400px !important;
   text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     line-height: 1.5;
-    max-height: 100%; /* 전체 섹션의 높이를 넘어가지 않도록 설정 */
-   padding: 10px;
-
     text-align: left;
+    padding: 0 15px;
 }
 
 /* 구분선 */
@@ -456,7 +449,7 @@ margin: 60px 0 20px; /* 헤더와 적절한 간격 유지 */
   
   flex: 1;        /* ⭐ 남은 공간 전부 */
   min-width: 0;  /* ⭐ 중요 (모바일 반토막 방지) */
- padding:10px;
+ padding:0 15px;
  gap:15px;
 
   p{
@@ -562,7 +555,7 @@ justify-content: center;
 
 
 p{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 p.no-margin {
@@ -570,7 +563,13 @@ p.no-margin {
 }
 
 h1{
-    margin-bottom: 2em;
+   
+    font-size:18px;
+}
+
+h2{
+    font-size: 14px;
+    margin-bottom: 1em;
 }
 
 
@@ -594,7 +593,8 @@ h1{
     min-width: 0;
   }
 .imagee-item img {
-    max-width: 100%;
+    max-width: calc(100% - 20px);
+    
   }
 
   
