@@ -34,6 +34,8 @@ a{
 /* 모바일 화면 (768px 이하) */
 @media (max-width: 768px) {
 
+
+
      #project-container {
       flex-direction: column;
       
@@ -183,7 +185,7 @@ nav ul li a:hover {
 }
 
 section {
-    padding: 70px 0;
+    padding: 70px 20px;
     text-align: center;
 }
 
@@ -285,6 +287,17 @@ object-fit: cover;
 
 
 }
+
+        
+
+@media (max-width: 412px){
+    section {
+    padding: 55px 10px;
+   
+}
+    
+}
+
 
 /* 슬라이드 이미지 스타일: 비율 유지하며 화면을 꽉 채우기 */
 .slideshow-container img {
@@ -563,14 +576,18 @@ p.no-margin {
 }
 
 h1{
-   
-    font-size:18px;
+     margin-bottom: 0.2em;
+    font-size:21px;
 }
 
-h2{
-    font-size: 14px;
-    margin-bottom: 1em;
+.text-divider {
+  width: calc(100% - 200px);
+  height: 1px;
+ 
+ background-color: black;
+  margin: 20px 0;  /* 위아래 간격 */
 }
+
 
 
 /* 모바일 레이아웃: 세로로 배치 */
