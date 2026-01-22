@@ -439,8 +439,11 @@ justify-content: center;
 
     .card img{width: 207px; height: auto;}  .poster img{width: 400px; height: auto;}    .book img{width: 270px; height: auto;}    .sticker img {width: 270px; height: auto;}   .wideposter img{width: 800px; height: auto;}
 
-    .wallet img{width:220px; height: auto;} .wallet2 img{width:300px; height: auto;} .lp img{width:850px;}
-.nds {
+    /*.wallet img{width:220px; height: auto;} .wallet2 img{width:300px; height: auto;} .lp img{width:850px; height: auto;} .pouch img{width: 300px; height: auto;} .ppouch{width: 420px; height: auto;} .ppouch2{width: 140px; height: auto;}*/
+
+.embr img{zoom: 0.28;}
+
+    .nds {
 zoom: 0.1583;
 }
 
