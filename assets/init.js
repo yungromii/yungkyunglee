@@ -1,153 +1,188 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // 페이지 경로에 따라 네비게이션 링크 활성화
-    const path = window.location.pathname;
-    const page = path.split("/").pop();
+document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
+  const page = path.split("/").pop();
 
+  // ---------------------------
+  // 1) 네비게이션 active 표시
+  // ---------------------------
+  try {
     const homeLink = document.getElementById("home-link");
     const worksLink = document.getElementById("works-link");
-    const galleryLink = document.getElementById("gallery-link");
-
-    // 초기 로드 시 홈 섹션 활성화 및 슬라이드쇼 실행
-    function activateHome() {
-        homeLink.classList.add("active-link");
-        showSlideshow();
-    }
+    const galleryLink = document.getElementById("gallery-link"); // 없을 수도 있음
 
     if (page === "index.html" || page === "") {
-        activateHome(); // 페이지 로드 시 자동으로 홈 섹션 활성화
+      if (homeLink) homeLink.classList.add("active-link");
     } else if (page === "works.html") {
-        worksLink.classList.add("active-link");
+      if (worksLink) worksLink.classList.add("active-link");
     } else if (page === "gallery.html") {
-        galleryLink.classList.add("active-link");
+      if (galleryLink) galleryLink.classList.add("active-link");
     }
+  } catch (e) {
+    // console.warn(e);
+  }
 
-    // 슬라이드쇼 기능 구현 (index.html에서만 동작)
-    function showSlideshow() {
-        const workItems = [
-           
-            { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "ROMI's OUTFIT" },
-            { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "EROTIC GARDEN" },
-            { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "STREET ANGELS" },
-            { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "STALKER" },
-            { src: "assets/vid/C1.gif", alt: "Spring Festival", caption: "2024 씨네꼼 봄 영화제" },
-            { src: "assets/vid/C.gif", alt: "Winter Festival", caption: "2024 씨네꼼 겨울 영화제" },
-            { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" }
-        ];
+  // ---------------------------
+  // 2) 슬라이드쇼 (index에만 컨테이너가 있으면 동작)
+  // ---------------------------
+  try {
+    const slideshowContainer = document.querySelector(".slideshow-container");
+    if (slideshowContainer) {
+      const workItems = [
+        { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "ROMI's OUTFIT" },
+        { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "EROTIC GARDEN" },
+        { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "STREET ANGELS" },
+        { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "STALKER" },
+        { src: "assets/vid/C1.gif", alt: "Spring Festival", caption: "2024 씨네꼼 봄 영화제" },
+        { src: "assets/vid/C.gif", alt: "Winter Festival", caption: "2024 씨네꼼 겨울 영화제" },
+        { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" }
+      ];
 
-        const slideshowContainer = document.querySelector(".slideshow-container");
+      slideshowContainer.innerHTML = "";
 
-        // 슬라이드 항목 생성
-        workItems.forEach((item, index) => {
-            const slide = document.createElement("div");
-            slide.classList.add("slide");
-            if (index === 0) slide.classList.add("active-slide");
+      workItems.forEach((item, index) => {
+        const slide = document.createElement("div");
+        slide.className = "slide" + (index === 0 ? " active-slide" : "");
 
-            const img = document.createElement("img");
-            img.src = item.src;
-            img.alt = item.alt;
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = item.alt;
 
-            const caption = document.createElement("div");
-            caption.classList.add("slideshow-caption");
-            caption.textContent = item.caption;
+        const caption = document.createElement("div");
+        caption.className = "slideshow-caption";
+        caption.textContent = item.caption;
 
-            slide.appendChild(img);
-            slide.appendChild(caption);
-            slideshowContainer.appendChild(slide);
+        slide.appendChild(img);
+        slide.appendChild(caption);
+        slideshowContainer.appendChild(slide);
+      });
+
+      let current = 0;
+      const slides = slideshowContainer.querySelectorAll(".slide");
+
+      setInterval(() => {
+        if (!slides.length) return;
+        slides[current].classList.remove("active-slide");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active-slide");
+      }, 3000);
+    }
+  } catch (e) {
+    // console.warn(e);
+  }
+
+  // ---------------------------
+  // 3) works/gallery 필터 (버튼이 있을 때만)
+  // ---------------------------
+  try {
+    const filters = document.querySelectorAll("#category-filters button");
+    if (filters.length) {
+      const items =
+        page === "gallery.html"
+          ? document.querySelectorAll(".gallery-item")
+          : document.querySelectorAll(".work-item");
+
+      function applyFilter(filter) {
+        items.forEach((item) => {
+          const cats = (item.getAttribute("data-categories") || "").split(" ");
+          item.style.display = filter === "all" || cats.includes(filter) ? "block" : "none";
         });
 
-        let currentSlide = 0;
-        const slides = slideshowContainer.querySelectorAll(".slide");
+        const section =
+          page === "gallery.html"
+            ? document.getElementById("gallery")
+            : document.getElementById("works");
 
-        // 슬라이드 변경 함수
-        function showNextSlide() {
-            slides[currentSlide].classList.remove("active-slide");
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add("active-slide");
-        }
+        if (section) section.style.display = "grid";
+      }
 
-        // 3초마다 슬라이드 전환
-        setInterval(showNextSlide, 3000);
-    }
+      filters.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.getAttribute("data-filter");
 
-   // 페이지에 따라 필터 대상 선택 (works 또는 gallery)
-    const items = page === "gallery.html"
-        ? document.querySelectorAll('.gallery-item')
-        : document.querySelectorAll('.work-item');
+          if (button.classList.contains("active")) {
+            button.classList.remove("active");
+            applyFilter("all");
+            return;
+          }
 
-    const filters = document.querySelectorAll('#category-filters button');
-
-    // 필터 버튼 클릭 이벤트
-    filters.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-
-            // 버튼이 이미 활성화되어 있으면 비활성화
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-                applyFilter("all"); // "all" 필터로 전환
-                return;
-            }
-
-            // 다른 버튼 비활성화 및 현재 버튼 활성화
-            filters.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            applyFilter(filter); // 선택된 필터 적용
+          filters.forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          applyFilter(filter);
         });
-    });
-
-    // 필터 적용 함수
-    function applyFilter(filter) {
-        items.forEach(item => {
-            const categories = item.getAttribute('data-categories').split(' ');
-            item.style.display = categories.includes(filter) || filter === "all" ? 'block' : 'none';
-        });
-
-        // 필터 후 Grid 레이아웃 강제 재적용
-        const section = page === "gallery.html" ? document.getElementById('gallery') : document.getElementById('works');
-        section.style.display = 'grid';
+      });
     }
+  } catch (e) {
+    // console.warn(e);
+  }
 
-    // 백드롭 비디오 음소거 토글 기능
-    const video = document.querySelector("#background-video"); // 비디오 요소 선택
-    const toggleSoundButton = document.querySelector("#toggle-sound"); // 음소거 토글 버튼 선택
-
-    if (video && toggleSoundButton) {
-        // 초기 음소거 설정
-        video.muted = true;
-
-        toggleSoundButton.addEventListener("click", () => {
-            // 뮤트 상태를 토글
-            video.muted = !video.muted;
-            // 버튼 텍스트 업데이트
-            toggleSoundButton.textContent = video.muted ? "sound on" : "sound off";
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
+  // ---------------------------
+  // 4) 접기/펼치기 (있을 때만)
+  // ---------------------------
+  try {
     const toggleButton = document.querySelector(".toggle-button");
     const collapsibleContent = document.querySelector(".collapsible-content");
 
-    toggleButton.addEventListener("click", () => {
+    if (toggleButton && collapsibleContent) {
+      toggleButton.addEventListener("click", () => {
         collapsibleContent.classList.toggle("expanded");
-        toggleButton.textContent = 
-            collapsibleContent.classList.contains("expanded") ? "접기" : "펼치기";
+        toggleButton.textContent = collapsibleContent.classList.contains("expanded") ? "접기" : "펼치기";
+      });
+    }
+  } catch (e) {
+    // console.warn(e);
+  }
+
+  // ---------------------------
+  // 5) ✅ 프로젝트 탭 (핵심: project 내부로 스코프 고정)
+  // ---------------------------
+  try {
+    const project = document.querySelector("#project-container");
+    const tabsWrap = document.querySelector(".project-tabs");
+
+    if (project && tabsWrap) {
+      const tabs = tabsWrap.querySelectorAll(".tab");
+
+      // 탭 콘텐츠는 무조건 project 안의 .tab-content만
+      // (설명/디바이더 순서가 바뀌어도 절대 안 깨짐)
+      const contents = project.querySelectorAll(".tab-content");
+
+      const activate = (tabId) => {
+        tabs.forEach((t) => t.classList.toggle("active", t.dataset.tab === tabId));
+        contents.forEach((c) => c.classList.toggle("active", c.dataset.tab === tabId));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const target = tab.dataset.tab;
+          const targetContent = project.querySelector(`.tab-content[data-tab="${target}"]`);
+          if (!targetContent) return;
+          activate(target);
+        });
+      });
+
+      const initial = tabsWrap.querySelector(".tab.active")?.dataset.tab || tabs[0]?.dataset.tab;
+      if (initial) activate(initial);
+    }
+  } catch (e) {
+    // console.warn(e);
+  }
+
+  // ---------------------------
+  // 6) (요청) 사운드 토글 제거 + 소리 재생 "시도"
+  // ---------------------------
+  try {
+    document.querySelectorAll("video").forEach((v) => {
+      // muted 속성이 있더라도 JS에서 해제 시도
+      v.muted = false;
+
+      // autoplay/loop면 재생 시도 (정책으로 막힐 수 있음)
+      if (v.hasAttribute("autoplay") || v.hasAttribute("loop")) {
+        const p = v.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
     });
-});
-
-const tabs = document.querySelectorAll('.project-tabs .tab');
-const contents = document.querySelectorAll('.tab-content');
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-
-    tabs.forEach(t => t.classList.remove('active'));
-    contents.forEach(c => c.classList.remove('active'));
-
-    tab.classList.add('active');
-    document.querySelector(`.tab-content[data-tab="${target}"]`).classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
+  } catch (e) {
+    // console.warn(e);
+  }
 });

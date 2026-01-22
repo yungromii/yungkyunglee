@@ -91,14 +91,6 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* 상세페이지 페이지 번호 관련 */
-.tab-content {
-display: none;
-}
-
-.tab-content.active {
-display: flex; /* 너 media-section이 flex라서 */
-}
 
 .project-tabs {
     position: fixed;
@@ -405,6 +397,7 @@ section {
     flex-wrap: wrap;      /* ⭐ 줄바꿈 */ 
     justify-content: center;
     overflow-y: hidden;
+    gap: 12px;
 }
 
 .sub {
@@ -495,4 +488,12 @@ zoom: 0.1583;
     display: block;
     object-fit: cover;
     z-index: -1; /* 비디오가 뒤에 표시되도록 설정 */
+}
+
+#project-container .tab-content { 
+  display: none;
+}
+
+#project-container .tab-content.active { 
+  display: flex;
 }
