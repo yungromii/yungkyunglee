@@ -27,14 +27,31 @@ document.addEventListener("DOMContentLoaded", () => {
   try {
     const slideshowContainer = document.querySelector(".slideshow-container");
     if (slideshowContainer) {
+      // workItems 옵션:
+      // - 일반 슬라이드: { src, alt, href }
+      // - 내부 프레임(미니 슬라이드쇼): { frames: ["...", "..."], frameMs: 300, alt, href }
       const workItems = [
-        { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", caption: "ROMI's OUTFIT" },
-        { src: "assets/vid/Ero.gif", alt: "Erotic Garden", caption: "EROTIC GARDEN" },
-        { src: "assets/vid/StreetAngels.gif", alt: "Street Angels", caption: "STREET ANGELS" },
-        { src: "assets/vid/Cc.gif", alt: "Stalker", caption: "STALKER" },
-        { src: "assets/vid/C1.gif", alt: "Spring Festival", caption: "2024 씨네꼼 봄 영화제" },
-        { src: "assets/vid/C.gif", alt: "Winter Festival", caption: "2024 씨네꼼 겨울 영화제" },
-        { src: "assets/vid/10.1.gif", alt: "10.1", caption: "10월 1일 국군의 날" }
+         { src: "assets/gif/street-angels.gif", alt: "Street Angels", href: "street-angels.html" },
+        { frames: ["assets/img/outfit/Rp.jpg","assets/img/outfit/Rp.jpg","assets/img/outfit/Rp.jpg","assets/img/outfit/1.jpg","assets/img/outfit/2.jpg","assets/img/outfit/3.jpg","assets/img/outfit/4.jpg","assets/img/outfit/5.jpg","assets/img/outfit/6.jpg","assets/img/outfit/dressup.jpg"], 
+          frameMs:300, alt: "romi-world", href:"romi-world.html"},
+
+        
+         
+
+        { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", href: "romis-outfit.html" },
+         { src: "assets/img/terayama.jpg", alt: "terayama", href: "terayama.html" },
+
+         { frames: ["assets/nds/poster.jpg","assets/nds/poster.jpg","assets/nds/poster.jpg","assets/nds/ti1.jpg","assets/nds/ti2.jpg","assets/nds/ti3.jpg","assets/nds/ti4.jpg","assets/nds/ti5.jpg","assets/nds/ti6.jpg","assets/nds/ti7.jpg"], 
+          frameMs:300, alt: "nodeulsum", href:"nodeulsum.html"},
+
+          { src: "assets/vid/Cc.gif", alt: "Stalker", href: "stalker.html" },
+        { src: "assets/vid/Ero.gif", alt: "Erotic Garden", href: "erotic-garden.html" },
+       
+       
+        { src: "assets/vid/C1.gif", alt: "Spring Festival", href: "cinecom-spring-2024.html" },
+        { src: "assets/vid/C.gif", alt: "Winter Festival", href: "cinecom-winter-2024.html" },
+        { src: "assets/vid/10.1.gif", alt: "10.1", href: "10-1.html" }
+       
       ];
 
       slideshowContainer.innerHTML = "";
@@ -43,27 +60,85 @@ document.addEventListener("DOMContentLoaded", () => {
         const slide = document.createElement("div");
         slide.className = "slide" + (index === 0 ? " active-slide" : "");
 
+        const link = document.createElement("a");
+        link.href = item.href || "works.html";
+        link.className = "slide-link";
+        link.setAttribute("aria-label", item.alt || "Open project");
+
         const img = document.createElement("img");
-        img.src = item.src;
         img.alt = item.alt;
 
-        const caption = document.createElement("div");
-        caption.className = "slideshow-caption";
-        caption.textContent = item.caption;
+        // ✅ 내부 프레임(미니 슬라이드쇼) 지원
+        if (Array.isArray(item.frames) && item.frames.length) {
+          img.src = item.frames[0];
+          img.dataset.frames = JSON.stringify(item.frames);
+          img.dataset.frameMs = String(item.frameMs || 300);
+        } else {
+          img.src = item.src;
+        }
 
-        slide.appendChild(img);
-        slide.appendChild(caption);
+        link.appendChild(img);
+        slide.appendChild(link);
         slideshowContainer.appendChild(slide);
       });
 
       let current = 0;
       const slides = slideshowContainer.querySelectorAll(".slide");
 
+      // ✅ 내부 프레임(미니 슬라이드쇼): 활성 슬라이드일 때만 재생
+      function startInnerShow(slideEl) {
+        if (!slideEl) return;
+        const img = slideEl.querySelector("img");
+        if (!img || !img.dataset.frames) return;
+
+        let frames;
+        try {
+          frames = JSON.parse(img.dataset.frames);
+        } catch {
+          return;
+        }
+        if (!Array.isArray(frames) || !frames.length) return;
+
+        const ms = Number(img.dataset.frameMs || 300);
+        stopInnerShow(slideEl);
+
+        let i = 0;
+        slideEl._innerTimer = setInterval(() => {
+          i = (i + 1) % frames.length;
+          img.src = frames[i];
+        }, ms);
+      }
+
+      function stopInnerShow(slideEl) {
+        if (!slideEl) return;
+        if (slideEl._innerTimer) {
+          clearInterval(slideEl._innerTimer);
+          slideEl._innerTimer = null;
+        }
+
+        // 비활성 시 첫 프레임으로 되돌리기(선호하면 유지)
+        const img = slideEl.querySelector("img");
+        if (img && img.dataset.frames) {
+          try {
+            const frames = JSON.parse(img.dataset.frames);
+            if (Array.isArray(frames) && frames.length) img.src = frames[0];
+          } catch {}
+        }
+      }
+
+      // 첫 슬라이드가 frames를 갖고 있으면 바로 재생
+      startInnerShow(slides[current]);
+
       setInterval(() => {
         if (!slides.length) return;
+
+        stopInnerShow(slides[current]);
         slides[current].classList.remove("active-slide");
+
         current = (current + 1) % slides.length;
+
         slides[current].classList.add("active-slide");
+        startInnerShow(slides[current]);
       }, 3000);
     }
   } catch (e) {
