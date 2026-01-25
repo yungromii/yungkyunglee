@@ -38,19 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
         
          
 
-        { src: "assets/vid/romisoutfit.gif", alt: "Romi's Outfit", href: "romis-outfit.html" },
+        { src: "assets/gif/romis-outfit.gif", alt: "Romi's Outfit", href: "romis-outfit.html" },
          { src: "assets/img/terayama.jpg", alt: "terayama", href: "terayama.html" },
 
          { frames: ["assets/nds/poster.jpg","assets/nds/poster.jpg","assets/nds/poster.jpg","assets/nds/ti1.jpg","assets/nds/ti2.jpg","assets/nds/ti3.jpg","assets/nds/ti4.jpg","assets/nds/ti5.jpg","assets/nds/ti6.jpg","assets/nds/ti7.jpg"], 
           frameMs:300, alt: "nodeulsum", href:"nodeulsum.html"},
 
-          { src: "assets/vid/Cc.gif", alt: "Stalker", href: "stalker.html" },
-        { src: "assets/vid/Ero.gif", alt: "Erotic Garden", href: "erotic-garden.html" },
+          { src: "assets/gif/Cc.gif", alt: "Stalker", href: "stalker.html" },
+        { src: "assets/gif/Ero.gif", alt: "Erotic Garden", href: "erotic-garden.html" },
        
        
-        { src: "assets/vid/C1.gif", alt: "Spring Festival", href: "cinecom-spring-2024.html" },
-        { src: "assets/vid/C.gif", alt: "Winter Festival", href: "cinecom-winter-2024.html" },
-        { src: "assets/vid/10.1.gif", alt: "10.1", href: "10-1.html" }
+        { src: "assets/gif/C1.gif", alt: "Spring Festival", href: "cinecom-spring-2024.html" },
+        { src: "assets/gif/C.gif", alt: "Winter Festival", href: "cinecom-winter-2024.html" },
+        { src: "assets/gif/10.1.gif", alt: "10.1", href: "10-1.html" }
        
       ];
 
